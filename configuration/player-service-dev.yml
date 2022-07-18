@@ -1,6 +1,9 @@
 server:
-  port: 9070
+  port: 9004
 spring:
+  cloud:
+    config:
+      enabled: false
   application:
     name: player-service
   data:
@@ -10,28 +13,30 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
-
 app:
   jwt-player-expiration-in-ms: 86400000
-  jwt-player-refresh-expiration-in-ms: 86400000
-  base-url-admin: http://localhost:4200
-  swagger-enabled: true
+  jwt-player-refresh-expiration-in-ms: 15778800000
+  base-url-admin: http://localhost:4200base-url: https://qa-casino-admin.gameium.combase-api-player-endpoint-url: https://qa-api.gameium.com/playerswagger-enabled: true
   enum-package-name: com.casino.enums
-  kafka-consumer-bootstrap-servers: b-2.kafka.1m2sc4.c25.kafka.us-east-1.amazonaws.com:9092,b-3.kafka.1m2sc4.c25.kafka.us-east-1.amazonaws.com:9092,b-1.kafka.1m2sc4.c25.kafka.us-east-1.amazonaws.com:9092
+  kafka-consumer-bootstrap-servers: localhost:9092
   kafka-email-topic-name: email_notification
   kafka-phone-verification-topic-name: phone_verification
   otp-max-retry-attempts: 3
   otp_expiration-in-ms: 300000
-  skrill-account-id: 180655636
-  skrill-pay-to-email: aakash.patel@ombpmllp.com
-  skrill-merchant-apimqi-password-md5: 9de83881cc9eb0b8ecce1d7bec661649
-  skrill-status-url: http://localhost:9004/v1/payment/skrill/status
-  skrill-quick-checkout-url: https://pay.skrill.com/app/?sid=
-  skrill-quick-withdraw-url: https://www.skrill.com/app/pay.pl
-  stripe-secret-apikey: sk_test_51KmBS5K8RXJpc26GJGks8OOhuzqDhJ7O3XrfmRhVScyuRqgt0x5UtS0N3sTLHqXCXDZpSRIMBAfhK0oeKBHkRt8Q00JqVTTRAj
-  stripe-public-apikey: pk_test_51KmBS5K8RXJpc26GU85GqUICFK9ZFr9dqILb1bkktmoKx4Z9bZumMQGResXEc8fmx8iaRzLnsGbkqyR10S4btxs200IRr2oyVU
+  skrill-account-id: 180846013
+  skrill-pay-to-email: itsupport@ombpmllp.com
+  skrill-merchant-apimqi-password-md5: a4dc9c4169d98e494b17c5e6bde7d2c11
+  skrill-status-url: /v1/payment/public/skrill/status
+  skrill-web-return-url: https://www.gameium.comskrill-web-cancel-url: https://www.gameium.comskrill-quick-checkout-url: https://pay.skrill.com/app/?sid=skrill-quick-withdraw-url: https://www.skrill.com/app/pay.plstripe-secret-apikey: sk_test_51KmBS5K8RXJpc26GJGks8OOhuzqDhJ7O3XrfmRhVScyuRqgt0x5UtS0N3sTLHqXCXDZpSRIMBAfhK0oeKBHkRt8Q00JqVTTRAj
+  stripe-public-apikey: pk_test_51KmBS5K8RXJpc26GU85GqUICFK9ZFr9dqILb1bkktmoKx4Z9bZumMQGResXEc8fmx8iaRzLnsGbkqyR10S4btxs200IRr2oyVU1
   payment-min-transter-amount: 1
-
+  withdraw-test-mode: true
+  delete_player_in_days_in_ms: 604800000
+  kafka-token-transaction-topic-name: token_transaction
+  kafka-token-transaction-topic-partitions: 1
+  kafka-token-transaction-topic-replicas: 1
+  kafka-token-transaction-group-id: token_transaction_group_id
+  date-format: yyyy-MM-dd HH:mm:ss
 logging:
   level:
     org:
